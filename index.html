@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link
+			rel="stylesheet"
+			href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+			integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+			crossorigin="anonymous"
+		/>
+
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.15/tailwind.min.css"
+			integrity="sha512-braXHF1tCeb8MzPktmUHhrjZBSZknHvjmkUdkAbeqtIrWwCchhcpUeAf2Sq3yIq1Q1x5PlroafjceOUbIE3Q5g=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+
+		<link rel="stylesheet" href="assets/css/style.css" />
+
+		<title>Project 1</title>
+	</head>
+	<body class="w-screen h-screen bg-red-500 grid place-content-center">
+		<main
+			class="
+				flex flex-col
+				gap-3
+				font-bold
+				w-full
+				h-full
+				text-4xl text-gray-300 text-center
+			"
+		>
+			<h1 class="text-2xl lg:text-4xl">Welcome to Project 1</h1>
+			<h3 class="text-lg">
+				Enter your birthday and see what movies were out at that time
+			</h3>
+
+			<div
+				class="
+					input-group
+					grid
+					justify-between
+					items-center
+					w-2/3
+					m-auto
+					rounded-lg
+					bg-red-300
+					border border-gray-300
+					text-sm
+				"
+			>
+				<i
+					class="
+						calendar-icon
+						far
+						fa-calendar
+						relative
+						cursor-pointer
+						p-2
+						border-r-2 border-solid
+						text-gray-100
+					"
+				>
+				</i>
+				<input
+					type="text"
+					id="birthday"
+					class="
+						h-full
+						text-gray-100
+						placeholder-gray-100
+						bg-transparent
+						text-center text-lg
+						outline-none
+					"
+					name="birthday"
+					placeholder="Birthday:"
+				/>
+			</div>
+		</main>
+
+		<script src="assets/js/script.js"></script>
+	</body>
+</html>

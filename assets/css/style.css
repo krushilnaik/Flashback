@@ -1,0 +1,45 @@
+.input-group {
+	grid-template-columns: auto 1fr;
+}
+
+.calendar-icon {
+	font-size: 24px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#picker {
+	position: absolute;
+	bottom: 165%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#picker::after {
+	position: absolute;
+	opacity: inherit;
+	content: '';
+	width: 20px;
+	height: 20px;
+	bottom: -10px;
+	/* transform: rotate(45deg); */
+	left: 50%;
+	transform: translateX(-50%) rotate(45deg);
+	/* transform-origin: 50% 50%; */
+	background: white;
+}
+
+#birthday {
+	color: white;
+}
+
+.datepicker-title {
+	color: black;
+}
+
+/* #birthday {
+	height: 100%;
+	background-color: transparent;
+} */
