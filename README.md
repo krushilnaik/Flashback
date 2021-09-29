@@ -1,10 +1,13 @@
 PLACEHOLDER
 
+# Project 1
+
+## Table of Contents
+
 - [Project 1](#project-1)
+	- [Table of Contents](#table-of-contents)
 	- [Tech stack](#tech-stack)
 	- [Demo](#demo)
-
-# Project 1
 
 Having trouble finding a movie to watch? Step into our time machine and see what was trending around the time (more accurately, the date and year) you were born!
 
