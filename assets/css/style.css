@@ -1,45 +1,47 @@
-.input-group {
-	grid-template-columns: auto 1fr;
+.content {
+	background-image: url(https://user-images.githubusercontent.com/87035690/135363778-6daaa32c-2981-4bb0-bfe6-5ad05e6b77aa.jpeg);
+	clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%);
 }
 
-.calendar-icon {
-	font-size: 24px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-top: 5px;
-	margin-bottom: 5px;
+header {
+	clip-path: polygon(0 0, 100% 0, calc(100% - 1em) 100%, 0 100%);
 }
 
-#picker {
-	position: absolute;
-	bottom: 165%;
-	left: 50%;
-	transform: translateX(-50%);
-}
-
-#picker::after {
-	position: absolute;
-	opacity: inherit;
-	content: '';
-	width: 20px;
-	height: 20px;
-	bottom: -10px;
-	/* transform: rotate(45deg); */
-	left: 50%;
-	transform: translateX(-50%) rotate(45deg);
-	/* transform-origin: 50% 50%; */
-	background: white;
-}
-
-#birthday {
-	color: white;
-}
-
-.datepicker-title {
-	color: black;
-}
-
-/* #birthday {
+input {
+	width: 100%;
 	height: 100%;
-	background-color: transparent;
-} */
+	border-radius: inherit;
+	text-align: center;
+	align-self: center;
+	justify-self: center;
+}
+
+.date-group {
+	display: grid;
+	grid-template-columns: repeat(3, auto);
+}
+
+.input {
+	display: grid;
+	position: relative;
+	padding: 3px;
+	font-size: 36px;
+	background: #009894;
+	width: 2em;
+	height: 2em;
+	border-radius: 10px;
+}
+
+.input.year {
+	width: 4em;
+}
+
+.input:not(:last-child):after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: -100%;
+	height: 5px;
+	width: 100%;
+	background-color: inherit;
+}
