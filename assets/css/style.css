@@ -23,6 +23,8 @@ input {
 	text-align: center;
 	align-self: center;
 	justify-self: center;
+	outline: none;
+	font-weight: 700;
 }
 
 .input {
@@ -30,8 +32,9 @@ input {
 	position: relative;
 	padding: 3px;
 	font-size: 36px;
-	background: #009894;
-	width: 2em;
+	background: darkslategray;
+	color: darkslateblue;
+	width: 2.8em;
 	height: 2em;
 	border-radius: 10px;
 }
@@ -44,10 +47,20 @@ input {
 	content: '';
 	position: absolute;
 	top: 50%;
-	right: -100%;
+	z-index: -1;
+	right: 0;
 	height: 5px;
 	width: 100%;
 	background-color: inherit;
+	transition: right 750ms;
+}
+
+.input.filled::after {
+	right: -100%;
+}
+
+.input:first-child::after {
+	background-color: red;
 }
 
 .date-group {

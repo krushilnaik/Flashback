@@ -60,7 +60,7 @@
 						date-group
 						mt-9
 						rounded
-						w-3/5
+						w-4/5
 						max-w-xl
 						h-28
 						items-center
@@ -68,26 +68,52 @@
 					"
 				>
 					<div class="input">
-						<input type="text" min="01" max="12" name="month" id="month" />
+						<input
+							type="text"
+							aria-label="birth month"
+							min="01"
+							max="12"
+							required
+							name="month"
+							id="month"
+							placeholder="MM"
+						/>
 					</div>
 					<div class="input">
-						<input type="text" min="01" max="31" name="day" id="day" />
+						<input
+							type="text"
+							required
+							aria-label="birth day"
+							min="01"
+							max="31"
+							name="day"
+							id="day"
+							placeholder="DD"
+						/>
 					</div>
 					<div class="input year">
-						<input type="text" name="year" id="year" />
+						<input
+							type="text"
+							required
+							aria-label="birth year"
+							name="year"
+							id="year"
+							placeholder="YYYY"
+						/>
 					</div>
 				</div>
 
 				<button
 					class="
 						bg-blue-400
-						py-3
-						px-2
+						p-3
 						rounded-lg
-						hover:bg-blue-500
+						hover:bg-white hover:border-blue-500 hover:text-blue-500
 						transition-colors
+						border-2
 					"
 					type="submit"
+					onclick="requestMovie()"
 				>
 					Find your movie
 				</button>
