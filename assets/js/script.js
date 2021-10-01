@@ -9,13 +9,15 @@ let inputFields = [
 ];
 
 /**
+ * The movie "card"
+ * @type {HTMLDivElement}
+ */
+let movieContainer = document.querySelector('.movie');
+
+/**
  * Destructure them for easier individual use
  */
 let [inputMonth, inputDay, inputYear] = inputFields;
-
-function Loader() {
-	//
-}
 
 /**
  * Using the date entered, fetch a movie that was released the same year
@@ -30,6 +32,8 @@ function requestMovie() {
 	 */
 	const API_KEY = '1160f108';
 
+	movieContainer.classList.add('loading');
+
 	// const URL = `http://www.omdbapi.com/?apikey=${API_KEY}&t=the&y=${inputYear.value}&type=movie`;
 
 	const URL = '/sample/1996.json';
@@ -37,7 +41,22 @@ function requestMovie() {
 	fetch(URL)
 		.then((response) => response.json())
 		.then((data) => {
+			const { Released, Title, Runtime, Poster, Ratings, Plot, Actors } = data;
+
+			movieContainer.querySelector('img').src = Poster;
+			movieContainer.querySelector('#movie-title').innerHTML = Title;
+			movieContainer.querySelector('#release-date span').innerHTML = Released;
+			movieContainer.querySelector('#imdb-rating span').innerHTML = Ratings[0]['Value'];
+			movieContainer.querySelector('#runtime span').innerHTML = Runtime;
+			movieContainer.querySelector('#starring span').innerHTML = Actors;
+			movieContainer.querySelector('#plot').innerHTML = Plot;
+
 			console.log(data);
+
+			// this is only for testing the loader animation
+			setTimeout(() => {
+				movieContainer.classList.remove('loading');
+			}, 1000);
 		});
 }
 
