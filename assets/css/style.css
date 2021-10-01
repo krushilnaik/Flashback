@@ -32,7 +32,7 @@ input {
 	font-size: 24px;
 }
 
-.snippet span {
+.snippet p {
 	font-weight: 300;
 	font-style: italic;
 }
@@ -44,7 +44,7 @@ input {
 	grid-template-columns: 2em auto;
 }
 
-.snippet.labeled span {
+.snippet.labeled p {
 	justify-self: flex-start;
 }
 
