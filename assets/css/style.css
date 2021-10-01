@@ -20,6 +20,7 @@ input {
 	width: 100%;
 	height: 100%;
 	border-radius: inherit;
+	border: solid 1px darkslateblue;
 	text-align: center;
 	align-self: center;
 	justify-self: center;
@@ -27,13 +28,33 @@ input {
 	font-weight: 700;
 }
 
+.snippet {
+	font-size: 24px;
+}
+
+.snippet span {
+	font-weight: 300;
+	font-style: italic;
+}
+
+.snippet.labeled {
+	display: grid;
+	place-items: center;
+
+	grid-template-columns: 2em auto;
+}
+
+.snippet.labeled span {
+	justify-self: flex-start;
+}
+
 .input {
 	display: grid;
 	position: relative;
-	padding: 3px;
+	padding: 5px;
 	font-size: 36px;
-	background: darkslategray;
-	color: darkslateblue;
+	background: rgba(147, 197, 253);
+	color: rgb(106, 94, 180);
 	width: 2.8em;
 	height: 2em;
 	border-radius: 10px;
@@ -47,9 +68,10 @@ input {
 	content: '';
 	position: absolute;
 	top: 50%;
+	transform: translateY(-50%);
 	z-index: -1;
 	right: 0;
-	height: 5px;
+	height: 10px;
 	width: 100%;
 	background-color: inherit;
 	transition: right 750ms;
@@ -59,11 +81,64 @@ input {
 	right: -100%;
 }
 
-.input:first-child::after {
-	background-color: red;
-}
-
 .date-group {
 	display: grid;
 	grid-template-columns: repeat(3, auto);
+}
+
+.movie {
+	position: relative;
+	height: 600px;
+	width: 850px;
+	grid-template-areas: 'poster info info' 'plot plot plot';
+}
+
+.movie.loading::after {
+	content: 'loading';
+	position: absolute;
+	display: grid;
+	place-content: center;
+	width: 100%;
+	height: 100%;
+	z-index: 9999999;
+	background-color: inherit;
+	border-radius: inherit;
+	font-size: 48px;
+}
+
+.movie-info {
+	grid-area: info;
+}
+
+#movie-title {
+	font-size: 52px;
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+
+#poster {
+	grid-area: poster;
+}
+
+#plot {
+	grid-area: plot;
+	background: #0002;
+	border-radius: 10px;
+	text-indent: 1.25em;
+	font-style: italic;
+	font-weight: normal;
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+	main {
+		padding-top: 100px;
+	}
+
+	.input {
+		font-size: 27px;
+	}
+
+	.movie {
+		grid-template-areas: 'poster' 'info' 'plot';
+	}
 }
