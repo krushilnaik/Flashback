@@ -4,6 +4,10 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="Enter your birthday and see what movies were out at that time"
+		/>
 
 		<link
 			rel="stylesheet"
@@ -22,65 +26,71 @@
 
 		<link rel="stylesheet" href="assets/css/style.css" />
 
-		<title>Project 1</title>
+		<title>FlashBack</title>
 	</head>
-	<body class="w-screen h-screen bg-red-500 grid place-content-center">
-		<main
+
+	<body class="w-screen h-screen grid relative bg-blue-300">
+		<header
 			class="
-				flex flex-col
-				gap-3
+				absolute
+				top-0
+				left-0
+				z-50
+				w-max
+				bg-red-200
+				py-2
+				pl-4
+				pr-12
+				text-3xl
 				font-bold
-				w-full
-				h-full
-				text-4xl text-gray-300 text-center
 			"
 		>
-			<h1 class="text-2xl lg:text-4xl">Welcome to Project 1</h1>
-			<h3 class="text-lg">
-				Enter your birthday and see what movies were out at that time
-			</h3>
+			FlashBack
+		</header>
 
-			<div
-				class="
-					input-group
-					grid
-					justify-between
-					items-center
-					w-2/3
-					m-auto
-					rounded-lg
-					bg-red-300
-					border border-gray-300
-					text-sm
-				"
-			>
-				<i
+		<main class="grid place-content-center font-bold">
+			<div class="text-gray-100 flex flex-col items-center gap-1">
+				<h1 class="text-2xl lg:text-4xl">Welcome to Flashback!</h1>
+				<h3 class="text-lg">
+					Enter your birthday and see what movies were out at that time
+				</h3>
+
+				<div
 					class="
-						calendar-icon
-						far
-						fa-calendar
-						relative
-						cursor-pointer
-						p-2
-						border-r-2 border-solid
-						text-gray-100
+						date-group
+						mt-9
+						rounded
+						w-3/5
+						max-w-xl
+						h-28
+						items-center
+						justify-items-center
 					"
 				>
-				</i>
-				<input
-					type="text"
-					id="birthday"
+					<div class="input">
+						<input type="text" min="01" max="12" name="month" id="month" />
+					</div>
+					<div class="input">
+						<input type="text" min="01" max="31" name="day" id="day" />
+					</div>
+					<div class="input year">
+						<input type="text" name="year" id="year" />
+					</div>
+				</div>
+
+				<button
 					class="
-						h-full
-						text-gray-100
-						placeholder-gray-100
-						bg-transparent
-						text-center text-lg
-						outline-none
+						bg-blue-400
+						py-3
+						px-2
+						rounded-lg
+						hover:bg-blue-500
+						transition-colors
 					"
-					name="birthday"
-					placeholder="Birthday:"
-				/>
+					type="submit"
+				>
+					Find your movie
+				</button>
 			</div>
 		</main>
 
