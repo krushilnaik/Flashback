@@ -74,6 +74,8 @@ function requestMovie() {
 				event.target.value = event.target.max;
 			}
 			inputFields[i + 1].focus();
+		} else {
+			input.parentElement.classList.remove('filled');
 		}
 	});
 });
