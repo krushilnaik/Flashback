@@ -108,6 +108,19 @@ async function requestMovie() {
 	});
 });
 
+inputYear.addEventListener('input', (event) => {
+	event.preventDefault();
+
+	if (event.target.value.length === 4) {
+		inputYear.parentElement.classList.add('filled');
+		if (event.target.value > event.target.max) {
+			event.target.value = event.target.max;
+		}
+	} else {
+		inputYear.parentElement.classList.remove('filled');
+	}
+});
+
 /**
  * If backspace is pressed in an empty input field, re-focus the previous one
  */
