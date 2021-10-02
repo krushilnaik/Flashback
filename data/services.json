@@ -1,0 +1,90 @@
+[
+	{
+		"id": 203,
+		"name": "Netflix",
+		"type": "sub",
+		"logo_100px": "https://cdn.watchmode.com/provider_logos/netflix_100px.png",
+		"ios_appstore_url": "http://itunes.apple.com/app/netflix/id363590051",
+		"android_playstore_url": "https://play.google.com/store/apps/details?id=com.netflix.mediaclient&hl=en",
+		"android_scheme": "nflx",
+		"ios_scheme": "nflx",
+		"regions": ["US", "CA", "GB", "AU"]
+	},
+	{
+		"id": 157,
+		"name": "Hulu",
+		"type": "sub",
+		"logo_100px": "https://cdn.watchmode.com/provider_logos/hulu_100px.png",
+		"ios_appstore_url": "http://itunes.apple.com/app/hulu-plus/id376510438",
+		"android_playstore_url": "https://play.google.com/store/apps/details?id=com.hulu.plus",
+		"android_scheme": "hulu",
+		"ios_scheme": "hulu",
+		"regions": ["US"]
+	},
+	{
+		"id": 26,
+		"name": "Amazon Prime",
+		"type": "sub",
+		"logo_100px": "https://cdn.watchmode.com/provider_logos/prime_video_100px.png",
+		"ios_appstore_url": "http://itunes.apple.com/app/amazon-instant-video/id545519333",
+		"android_playstore_url": "http://amazon.com/GetAndroidVideo",
+		"android_scheme": "intent",
+		"ios_scheme": "aiv",
+		"regions": ["GB", "US", "CA", "AU"]
+	},
+	{
+		"id": 387,
+		"name": "HBO MAX",
+		"type": "sub",
+		"logo_100px": "https://cdn.watchmode.com/provider_logos/hbomax_100px.png",
+		"ios_appstore_url": null,
+		"android_playstore_url": null,
+		"android_scheme": "hbomax",
+		"ios_scheme": "hbomax",
+		"regions": ["US"]
+	},
+	{
+		"id": 372,
+		"name": "Disney+",
+		"type": "sub",
+		"logo_100px": "https://cdn.watchmode.com/provider_logos/disneyPlus_100px.png",
+		"ios_appstore_url": "https://apps.apple.com/app/disney/id1446075923",
+		"android_playstore_url": null,
+		"android_scheme": "disneyplus",
+		"ios_scheme": "disneyplus",
+		"regions": ["US", "CA", "GB", "AU"]
+	},
+	{
+		"id": 371,
+		"name": "AppleTV+",
+		"type": "sub",
+		"logo_100px": "https://cdn.watchmode.com/provider_logos/appleTvPlus_100px.png",
+		"ios_appstore_url": null,
+		"android_playstore_url": null,
+		"android_scheme": null,
+		"ios_scheme": null,
+		"regions": ["GB", "AU", "US", "CA"]
+	},
+	{
+		"id": 344,
+		"name": "YouTube",
+		"type": "purchase",
+		"logo_100px": "https://cdn.watchmode.com/provider_logos/youtube_100px.png",
+		"ios_appstore_url": "http://itunes.apple.com/app/youtube/id544007664",
+		"android_playstore_url": "https://play.google.com/store/apps/details?id=com.google.android.youtube",
+		"android_scheme": null,
+		"ios_scheme": "youtube",
+		"regions": ["US", "GB", "AU", "CA"]
+	},
+	{
+		"id": 345,
+		"name": "YouTube",
+		"type": "free",
+		"logo_100px": "https://cdn.watchmode.com/provider_logos/youtube_100px.png",
+		"ios_appstore_url": "http://itunes.apple.com/app/youtube/id544007664",
+		"android_playstore_url": "https://play.google.com/store/apps/details?id=com.google.android.youtube",
+		"android_scheme": null,
+		"ios_scheme": "youtube",
+		"regions": ["US", "AU"]
+	}
+]
