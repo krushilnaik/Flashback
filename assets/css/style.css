@@ -7,7 +7,7 @@ main::before {
 	left: 0;
 	background-image: url(https://user-images.githubusercontent.com/87035690/135363778-6daaa32c-2981-4bb0-bfe6-5ad05e6b77aa.jpeg);
 	background-size: cover;
-	clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%);
+	clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
 	z-index: -1;
 	opacity: 0.25;
 }
@@ -28,8 +28,19 @@ input {
 	font-weight: 700;
 }
 
+button {
+	border-width: 5px;
+}
+
 .snippet {
+	position: relative;
 	font-size: 24px;
+	background: #0002;
+	border-radius: 10px;
+	overflow: hidden;
+	font-style: italic;
+	font-weight: normal;
+	height: 100%;
 }
 
 .snippet p {
@@ -40,12 +51,31 @@ input {
 .snippet.labeled {
 	display: grid;
 	place-items: center;
+	padding: 5px;
 
 	grid-template-columns: 2em auto;
 }
 
 .snippet.labeled p {
 	justify-self: flex-start;
+}
+
+.snippet::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -300%;
+	width: 250px;
+	height: 100%;
+	box-shadow: 0 0 50px 50px white;
+	transform: skewX(-25deg);
+	background-color: white;
+	opacity: 0.3;
+	z-index: 99999;
+}
+
+.movie.loading .snippet::after {
+	animation: loader infinite linear 1.05s;
 }
 
 .input {
@@ -88,22 +118,11 @@ input {
 
 .movie {
 	position: relative;
+	grid-template-rows: 344px 2fr 1fr;
+	grid-template-columns: repeat(3, 1fr);
 	height: 600px;
 	width: 850px;
-	grid-template-areas: 'poster info info' 'plot plot plot';
-}
-
-.movie.loading::after {
-	content: 'loading';
-	position: absolute;
-	display: grid;
-	place-content: center;
-	width: 100%;
-	height: 100%;
-	z-index: 9999999;
-	background-color: inherit;
-	border-radius: inherit;
-	font-size: 48px;
+	grid-template-areas: 'poster info info' 'plot plot plot' 'services services services';
 }
 
 .movie-info {
@@ -112,21 +131,32 @@ input {
 
 #movie-title {
 	font-size: 52px;
-	margin-top: 10px;
-	margin-bottom: 30px;
+}
+
+#release-date {
+	width: 250px;
+}
+
+#runtime {
+	width: 150px;
+}
+
+#rating {
+	width: 200px;
 }
 
 #poster {
+	max-height: 100%;
 	grid-area: poster;
 }
 
 #plot {
 	grid-area: plot;
-	background: #0002;
-	border-radius: 10px;
-	text-indent: 1.25em;
-	font-style: italic;
-	font-weight: normal;
+	font-size: 19px;
+}
+
+#services {
+	grid-area: services;
 }
 
 @media screen and (min-width: 320px) and (max-width: 480px) {
@@ -140,5 +170,14 @@ input {
 
 	.movie {
 		grid-template-areas: 'poster' 'info' 'plot';
+	}
+}
+
+@keyframes loader {
+	from {
+		left: -300%;
+	}
+	to {
+		left: 150%;
 	}
 }
