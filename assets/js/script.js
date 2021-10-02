@@ -45,18 +45,14 @@ function requestMovie() {
 
 			movieContainer.querySelector('img').src = Poster;
 			movieContainer.querySelector('#movie-title').innerHTML = Title;
-			movieContainer.querySelector('#release-date span').innerHTML = Released;
-			movieContainer.querySelector('#imdb-rating span').innerHTML = Ratings[0]['Value'];
-			movieContainer.querySelector('#runtime span').innerHTML = Runtime;
-			movieContainer.querySelector('#starring span').innerHTML = Actors;
+			movieContainer.querySelector('#release-date p').innerHTML = Released;
+			movieContainer.querySelector('#rating p').innerHTML = Ratings[0]['Value'];
+			movieContainer.querySelector('#runtime p').innerHTML = Runtime;
+			movieContainer.querySelector('#starring p').innerHTML = Actors;
 			movieContainer.querySelector('#plot').innerHTML = Plot;
 
-			console.log(data);
-
 			// this is only for testing the loader animation
-			setTimeout(() => {
-				movieContainer.classList.remove('loading');
-			}, 1000);
+			movieContainer.classList.remove('loading');
 		});
 }
 
@@ -89,15 +85,4 @@ inputFields.forEach((input, i) => {
 			inputFields[i - 1].focus();
 		}
 	});
-});
-
-/**
- * Bring up the submit button once all fields are filled
- */
-inputYear.addEventListener('input', (event) => {
-	event.preventDefault();
-
-	if (event.target.value.length === 4) {
-		console.log('All fields filled');
-	}
 });
