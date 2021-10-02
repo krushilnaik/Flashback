@@ -7,7 +7,7 @@ main::before {
 	left: 0;
 	background-image: url(https://user-images.githubusercontent.com/87035690/135363778-6daaa32c-2981-4bb0-bfe6-5ad05e6b77aa.jpeg);
 	background-size: cover;
-	clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%);
+	clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
 	z-index: -1;
 	opacity: 0.25;
 }
@@ -20,6 +20,7 @@ input {
 	width: 100%;
 	height: 100%;
 	border-radius: inherit;
+	border: solid 1px darkslateblue;
 	text-align: center;
 	align-self: center;
 	justify-self: center;
@@ -27,13 +28,63 @@ input {
 	font-weight: 700;
 }
 
+button {
+	border-width: 5px;
+}
+
+.snippet {
+	position: relative;
+	font-size: 24px;
+	background: #0002;
+	border-radius: 10px;
+	overflow: hidden;
+	font-style: italic;
+	font-weight: normal;
+	height: 100%;
+}
+
+.snippet p {
+	font-weight: 300;
+	font-style: italic;
+}
+
+.snippet.labeled {
+	display: grid;
+	place-items: center;
+	padding: 5px;
+
+	grid-template-columns: 2em auto;
+}
+
+.snippet.labeled p {
+	justify-self: flex-start;
+}
+
+.snippet::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -300%;
+	width: 250px;
+	height: 100%;
+	box-shadow: 0 0 50px 50px white;
+	transform: skewX(-25deg);
+	background-color: white;
+	opacity: 0.3;
+	z-index: 99999;
+}
+
+.movie.loading .snippet::after {
+	animation: loader infinite linear 1.05s;
+}
+
 .input {
 	display: grid;
 	position: relative;
-	padding: 3px;
+	padding: 5px;
 	font-size: 36px;
-	background: darkslategray;
-	color: darkslateblue;
+	background: rgba(147, 197, 253);
+	color: rgb(106, 94, 180);
 	width: 2.8em;
 	height: 2em;
 	border-radius: 10px;
@@ -47,9 +98,10 @@ input {
 	content: '';
 	position: absolute;
 	top: 50%;
+	transform: translateY(-50%);
 	z-index: -1;
 	right: 0;
-	height: 5px;
+	height: 10px;
 	width: 100%;
 	background-color: inherit;
 	transition: right 750ms;
@@ -59,11 +111,73 @@ input {
 	right: -100%;
 }
 
-.input:first-child::after {
-	background-color: red;
-}
-
 .date-group {
 	display: grid;
 	grid-template-columns: repeat(3, auto);
+}
+
+.movie {
+	position: relative;
+	grid-template-rows: 344px 2fr 1fr;
+	grid-template-columns: repeat(3, 1fr);
+	height: 600px;
+	width: 850px;
+	grid-template-areas: 'poster info info' 'plot plot plot' 'services services services';
+}
+
+.movie-info {
+	grid-area: info;
+}
+
+#movie-title {
+	font-size: 52px;
+}
+
+#release-date {
+	width: 250px;
+}
+
+#runtime {
+	width: 150px;
+}
+
+#rating {
+	width: 200px;
+}
+
+#poster {
+	max-height: 100%;
+	grid-area: poster;
+}
+
+#plot {
+	grid-area: plot;
+	font-size: 19px;
+}
+
+#services {
+	grid-area: services;
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+	main {
+		padding-top: 100px;
+	}
+
+	.input {
+		font-size: 27px;
+	}
+
+	.movie {
+		grid-template-areas: 'poster' 'info' 'plot';
+	}
+}
+
+@keyframes loader {
+	from {
+		left: -300%;
+	}
+	to {
+		left: 150%;
+	}
 }
