@@ -1,10 +1,28 @@
+// OMDb stuff
+const OMDB_API_KEY = '1160f108';
+const OMDB_URL = 'http://www.omdbapi.com';
+
+// Watchmode stuff
+const WATCHMODE_API_KEY = 'lRXZDQg46UX6Rtc0TC32jZ3ryc427Mmh14ChY3TH';
+const WATCHMODE_URL = 'https://api.watchmode.com';
+
+/**
+ * Input group
+ * @type {HTMLDivElement}
+ */
 let inputGroup = document.querySelector('.date-group');
 
 /**
- * Grab the three input fields
+ * The three input fields
  * @type {HTMLInputElement[]}
  */
 let inputFields = [...inputGroup.querySelectorAll('input')];
+
+/**
+ * Scrollable list of services
+ * @type {HTMLDivElement}
+ */
+let servicesElement = document.getElementById('services');
 
 /**
  * Destructure them for easier individual use
@@ -34,15 +52,6 @@ function checkFields() {
  */
 async function requestMovie() {
 	/**
-	 * For lack of both urgency and a better option, keep these in the code
-	 */
-	const OMDB_API_KEY = '1160f108';
-	const OMDB_URL = 'http://www.omdbapi.com';
-
-	const WATCHMODE_API_KEY = 'lRXZDQg46UX6Rtc0TC32jZ3ryc427Mmh14ChY3TH';
-	const WATCHMODE_URL = 'https://api.watchmode.com';
-
-	/**
 	 * Predefine these variables for usage with API calls
 	 * Recycling is good
 	 */
@@ -56,10 +65,15 @@ async function requestMovie() {
 	response = await fetch(OMDB_SEARCH); // `${OMDB_URL}/?apikey=${OMDB_API_KEY}&t=the&y=${inputYear.value}&type=movie`
 	data = await response.json();
 
-	const { Released, Title, Runtime, Poster, Ratings, Plot, Actors, imdbID } = data;
+	const { Released, Title, Runtime, Poster, Rated, Ratings, Plot, Actors, imdbID } = data;
 
-	movieContainer.querySelector('img').src = Poster;
-	movieContainer.querySelector('#movie-title').innerHTML = Title;
+	movieContainer.querySelector('#poster').src = Poster;
+
+	movieContainer.querySelector('#movie-title').innerHTML = /*html*/ `
+		<div>${Title}</div>
+		<div class="rating rounded border-4 text-4xl px-2 font-serif border-gray-100">${Rated}</div>
+	`;
+
 	movieContainer.querySelector('#release-date p').innerHTML = Released;
 	movieContainer.querySelector('#rating p').innerHTML = Ratings[0]['Value'];
 	movieContainer.querySelector('#runtime p').innerHTML = Runtime;
@@ -91,10 +105,6 @@ async function requestMovie() {
 		response = await fetch(WATCHMODE_TITLE);
 		data = await response.json();
 
-		// do something with the data
-
-		let servicesElement = document.getElementById('services');
-
 		let redirectLinks = {};
 
 		data.forEach((source) => {
@@ -124,8 +134,7 @@ async function requestMovie() {
 }
 
 /**
- * This automates shifting focus to the next input field in line
- * Also plays a neat progress/breadcrumb animation
+ * Automates shifting focus to the next input field in line
  */
 [inputMonth, inputDay].forEach((input, i) => {
 	input.parentElement.addEventListener('input', (event) => {
@@ -165,10 +174,8 @@ inputYear.addEventListener('input', (event) => {
  */
 inputFields.forEach((input, i) => {
 	input.addEventListener('keydown', (event) => {
-		if (event.target.value === '' && event.key === 'Backspace') {
+		if (i && event.target.value === '' && event.key === 'Backspace') {
 			inputFields[i - 1].focus();
 		}
 	});
 });
-
-requestMovie();
