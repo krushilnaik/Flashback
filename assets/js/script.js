@@ -25,11 +25,6 @@ let inputFields = [...inputGroup.querySelectorAll('input')];
 let servicesElement = document.getElementById('services');
 
 /**
- * Destructure them for easier individual use
- */
-let [inputMonth, inputDay, inputYear] = inputFields;
-
-/**
  * The movie "card"
  * @type {HTMLDivElement}
  */
@@ -136,37 +131,23 @@ async function requestMovie() {
 /**
  * Automates shifting focus to the next input field in line
  */
-[inputMonth, inputDay].forEach((input, i) => {
+inputFields.forEach((input, i) => {
 	input.parentElement.addEventListener('input', (event) => {
 		event.preventDefault();
 
-		if (event.target.value.length === 2) {
+		if (event.target.value.length === event.target.getAttribute('max').length) {
 			input.parentElement.classList.add('filled');
 			if (event.target.value > event.target.max) {
 				event.target.value = event.target.max;
 			}
-			inputFields[i + 1].focus();
+
+			if (i < 2) inputFields[i + 1].focus();
 		} else {
 			input.parentElement.classList.remove('filled');
 		}
 
 		checkFields();
 	});
-});
-
-inputYear.addEventListener('input', (event) => {
-	event.preventDefault();
-
-	if (event.target.value.length === 4) {
-		inputYear.parentElement.classList.add('filled');
-		if (event.target.value > event.target.max) {
-			event.target.value = event.target.max;
-		}
-	} else {
-		inputYear.parentElement.classList.remove('filled');
-	}
-
-	checkFields();
 });
 
 /**
