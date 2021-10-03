@@ -179,5 +179,3 @@ inputFields.forEach((input, i) => {
 		}
 	});
 });
-
-requestMovie();

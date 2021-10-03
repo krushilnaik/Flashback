@@ -30,10 +30,12 @@ input {
 
 button[type='submit'] {
 	border-width: 5px;
-	transition: filter 350ms;
+	transition-property: filter, color, background-color, border-color;
+	transition-duration: 350ms;
 }
 
 button[type='submit']:disabled {
+	position: relative;
 	filter: grayscale(1) brightness(0.6);
 	cursor: default;
 }
