@@ -1,23 +1,27 @@
+let inputGroup = document.querySelector('.date-group');
+
 /**
  * Grab the three input fields
  * @type {HTMLInputElement[]}
  */
-let inputFields = [
-	document.getElementById('month'),
-	document.getElementById('day'),
-	document.getElementById('year')
-];
+let inputFields = [...inputGroup.querySelectorAll('input')];
+
+function checkFields() {
+	const allFieldsFilled = inputGroup.getElementsByClassName('filled').length;
+	document.querySelector('button').disabled = !(allFieldsFilled === 3);
+	console.log(`${allFieldsFilled} missions cleared`);
+}
+
+/**
+ * Destructure them for easier individual use
+ */
+let [inputMonth, inputDay, inputYear] = inputFields;
 
 /**
  * The movie "card"
  * @type {HTMLDivElement}
  */
 let movieContainer = document.querySelector('.movie');
-
-/**
- * Destructure them for easier individual use
- */
-let [inputMonth, inputDay, inputYear] = inputFields;
 
 /**
  * Using the date entered, fetch a movie that was released the same year
@@ -105,6 +109,8 @@ async function requestMovie() {
 		} else {
 			input.parentElement.classList.remove('filled');
 		}
+
+		checkFields();
 	});
 });
 
@@ -119,6 +125,8 @@ inputYear.addEventListener('input', (event) => {
 	} else {
 		inputYear.parentElement.classList.remove('filled');
 	}
+
+	checkFields();
 });
 
 /**
