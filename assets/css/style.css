@@ -28,12 +28,12 @@ input {
 	font-weight: 700;
 }
 
-button {
+button[type='submit'] {
 	border-width: 5px;
 	transition: filter 350ms;
 }
 
-button:disabled {
+button[type='submit']:disabled {
 	filter: grayscale(1) brightness(0.6);
 	cursor: default;
 }
@@ -132,7 +132,7 @@ button:disabled {
 
 .movie {
 	position: relative;
-	grid-template-rows: 344px 3fr 1fr;
+	grid-template-rows: 344px 2.5fr 1fr;
 	grid-template-columns: repeat(3, 1fr);
 	height: 600px;
 	width: 850px;
@@ -170,7 +170,46 @@ button:disabled {
 }
 
 #services {
+	/* flex-direction: row; */
 	grid-area: services;
+	overflow-x: auto;
+	/* padding-bottom: 10px; */
+}
+
+/* width */
+#services::-webkit-scrollbar {
+	height: 5px;
+}
+
+/* Track */
+#services::-webkit-scrollbar-track {
+	background: #ffffff8e;
+}
+
+/* Handle */
+#services::-webkit-scrollbar-thumb {
+	background: rgb(0, 204, 255);
+}
+
+/* Handle on hover */
+#services::-webkit-scrollbar-thumb:hover {
+	background: rgb(0, 102, 255);
+}
+
+.redirect-link {
+	/* rounded-full text-black text-base bg-gray-50 px-3 py-1 */
+	background-color: honeydew;
+	border-radius: 9999px;
+	padding: 5px 10px;
+	color: black;
+	font-style: normal;
+	font-size: 16px;
+	transition-property: background-color, color;
+	transition-duration: 300ms;
+}
+.redirect-link:hover {
+	background-color: rgb(255, 113, 113);
+	color: white;
 }
 
 @media screen and (min-width: 320px) and (max-width: 480px) {
