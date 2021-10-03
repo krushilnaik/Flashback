@@ -20,7 +20,7 @@ input {
 	width: 100%;
 	height: 100%;
 	border-radius: inherit;
-	border: solid 1px darkslateblue;
+	z-index: 2;
 	text-align: center;
 	align-self: center;
 	justify-self: center;
@@ -79,14 +79,18 @@ button {
 }
 
 .input {
+	--accent-color: rgb(77, 68, 190);
+
 	display: grid;
 	position: relative;
-	padding: 5px;
+	padding: 6px;
+	z-index: 2;
 	font-size: 36px;
-	background: rgba(147, 197, 253);
-	color: rgb(106, 94, 180);
+	background: var(--accent-color);
+	color: var(--accent-color);
 	width: 2.8em;
 	height: 2em;
+	transition: background-color 350ms;
 	border-radius: 10px;
 }
 
@@ -99,12 +103,16 @@ button {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
-	z-index: -1;
+	z-index: 1;
 	right: 0;
 	height: 10px;
 	width: 100%;
 	background-color: inherit;
 	transition: right 750ms;
+}
+
+.input.filled {
+	background-color: darkturquoise;
 }
 
 .input.filled::after {
@@ -169,7 +177,13 @@ button {
 	}
 
 	.movie {
-		grid-template-areas: 'poster' 'info' 'plot';
+		width: 90%;
+		height: fit-content;
+		grid-template-areas: 'info' 'plot';
+	}
+
+	#poster {
+		display: none;
 	}
 }
 
