@@ -6,12 +6,6 @@ let inputGroup = document.querySelector('.date-group');
  */
 let inputFields = [...inputGroup.querySelectorAll('input')];
 
-function checkFields() {
-	const allFieldsFilled = inputGroup.getElementsByClassName('filled').length;
-	document.querySelector('button').disabled = !(allFieldsFilled === 3);
-	console.log(`${allFieldsFilled} missions cleared`);
-}
-
 /**
  * Destructure them for easier individual use
  */
@@ -22,6 +16,14 @@ let [inputMonth, inputDay, inputYear] = inputFields;
  * @type {HTMLDivElement}
  */
 let movieContainer = document.querySelector('.movie');
+
+/**
+ * Check if all the fields in the input group have been (legitamately) filled out
+ */
+function checkFields() {
+	const allFieldsFilled = inputGroup.getElementsByClassName('filled').length;
+	document.querySelector('button').disabled = !(allFieldsFilled === 3);
+}
 
 /**
  * Using the date entered, fetch a movie that was released the same year
@@ -74,6 +76,13 @@ async function requestMovie() {
 	// data = await response.json();
 
 	if (!data.statusCode) {
+		response = await fetch('/data/services.json');
+
+		/**
+		 * @type {object[]}
+		 */
+		const supportedServices = await response.json();
+
 		// const watchmodeID = data.title_results[0].id;
 
 		// const WATCHMODE_TITLE = `${WATCHMODE_URL}/v1/title/${watchmodeID}/sources/?apiKey=${WATCHMODE_API_KEY}&regions=US`;
@@ -84,9 +93,31 @@ async function requestMovie() {
 
 		// do something with the data
 
-		console.log(data);
+		let servicesElement = document.getElementById('services');
+
+		let redirectLinks = {};
+
+		data.forEach((source) => {
+			const service = supportedServices.find((service) => service.id === source.source_id);
+
+			if (service === undefined) {
+				alert("Couldn't find that service, something is wrong");
+			}
+
+			if (!Object.keys(redirectLinks).includes(service.name)) {
+				redirectLinks[service.name] = source.web_url;
+			}
+		});
+
+		Object.entries(redirectLinks).forEach((entry) => {
+			const [service, link] = entry;
+
+			servicesElement.innerHTML += /*html*/ `
+				<a class='redirect-link' href="${link}" target='_blank'>${service}</a>
+			`;
+		});
 	} else {
-		console.log(`Error fetching ${WATCHMODE_SEARCH}`);
+		console.log(`Error fetching ${WATCHMODE_SEARCH || ''}`);
 	}
 
 	movieContainer.classList.remove('loading');
@@ -139,3 +170,5 @@ inputFields.forEach((input, i) => {
 		}
 	});
 });
+
+requestMovie();
