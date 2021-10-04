@@ -4,23 +4,23 @@ You and your group will use everything you’ve learned over the past six weeks 
 
 -  [x] Use a CSS framework other than Bootstrap.
 
--  [ ] Be deployed to GitHub Pages.
+-  [x] Be deployed to GitHub Pages.
 
 -  [x] Be interactive (i.e: accept and respond to user input).
 
 -  [x] Use at least two server-side APIs.
 
--  [ ] Does not use alerts, confirms, or prompts (use modals).
+-  [x] Does not use alerts, confirms, or prompts (use modals).
 
 -  [ ] Use client-side storage to store persistent data.
 
--  [ ] Be responsive.
+-  [x] Be responsive.
 
 -  [x] Have a polished UI.
 
--  [ ] Have a clean repository that meets quality coding standards (file structure, naming conventions, follows best practices for class/id-naming conventions, indentation, quality comments, etc.).
+-  [x] Have a clean repository that meets quality coding standards (file structure, naming conventions, follows best practices for class/id-naming conventions, indentation, quality comments, etc.).
 
--  [ ] Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
+-  [x] Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
 
 -  [ ] Finally, You must add your project to the portfolio that you created in Module 2.
 
@@ -38,4 +38,4 @@ You and your group will use everything you’ve learned over the past six weeks 
 
 # Directions for future development
 
--  [ ] Links to the deployed application and the GitHub repository.
+-  [x] Links to the deployed application and the GitHub repository.
