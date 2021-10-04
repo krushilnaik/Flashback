@@ -17,9 +17,9 @@ This is the first project of the Rutgers Coding Bootcamp. The goal is to use eve
 ## Tech stack
 
 -  Vanilla JavaScript
--  TailwindCSS
--  OMDb API
--  Watchmode API
+-  [TailwindCSS](https://tailwindcss.com/)
+-  [OMDb API](http://www.omdbapi.com/)
+-  [Watchmode API](https://api.watchmode.com/)
 
 ## Demo
 
