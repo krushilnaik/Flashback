@@ -82,6 +82,14 @@ button[type='submit']:disabled {
 	z-index: 99999;
 }
 
+.movie.loading #services {
+	overflow: hidden;
+}
+
+.loading #poster {
+	animation: brighten infinite alternate linear 0.7s;
+}
+
 .movie.loading .snippet::after {
 	animation: loader infinite linear 1.05s;
 }
@@ -240,5 +248,15 @@ button[type='submit']:disabled {
 	}
 	to {
 		left: 150%;
+	}
+}
+
+@keyframes brighten {
+	from {
+		filter: brightness(1);
+	}
+
+	to {
+		filter: brightness(1.3);
 	}
 }
