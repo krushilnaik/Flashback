@@ -4,7 +4,7 @@ const OMDB_URL = 'http://www.omdbapi.com';
 
 // Watchmode stuff
 const WATCHMODE_API_KEY = 'lRXZDQg46UX6Rtc0TC32jZ3ryc427Mmh14ChY3TH';
-const WATCHMODE_URL = 'https://api.watchmode.com';
+const WATCHMODE_URL = 'https://api.watchmode.com/v1';
 
 /**
  * Input group
@@ -54,8 +54,18 @@ async function requestMovie() {
 
 	movieContainer.classList.add('loading');
 
+	/**
+	 * This is just to demo the loading animation.
+	 * Remove this for production
+	 */
+	await new Promise((resolve, _reject) => {
+		setInterval(() => {
+			// resolve();
+		}, 1500);
+	});
+
 	// const OMDB_SEARCH = `${OMDB_URL}/?apikey=${OMDB_API_KEY}&t=the&y=${inputYear.value}&type=movie`;
-	const OMDB_SEARCH = '/sample/1996.json';
+	const OMDB_SEARCH = 'assets/sample/1996.json';
 
 	response = await fetch(OMDB_SEARCH); // `${OMDB_URL}/?apikey=${OMDB_API_KEY}&t=the&y=${inputYear.value}&type=movie`
 	data = await response.json();
@@ -79,13 +89,13 @@ async function requestMovie() {
 	 * Pipe the previously fetched IMDb ID into the Watchmode API
 	 * and get all services the given movie is still streaming on
 	 */
-	// const WATCHMODE_SEARCH = `${WATCHMODE_URL}/v1/search/?apiKey=${WATCHMODE_API_KEY}&search_field=imdb_id&search_value=${imdbID}`;
+	// const WATCHMODE_SEARCH = `${WATCHMODE_URL}/search/?apiKey=${WATCHMODE_API_KEY}&search_field=imdb_id&search_value=${imdbID}`;
 
 	// response = await fetch(WATCHMODE_SEARCH);
 	// data = await response.json();
 
 	if (!data.statusCode) {
-		response = await fetch('/data/services.json');
+		response = await fetch('assets/json/services.json');
 
 		/**
 		 * @type {object[]}
@@ -94,8 +104,8 @@ async function requestMovie() {
 
 		// const watchmodeID = data.title_results[0].id;
 
-		// const WATCHMODE_TITLE = `${WATCHMODE_URL}/v1/title/${watchmodeID}/sources/?apiKey=${WATCHMODE_API_KEY}&regions=US`;
-		const WATCHMODE_TITLE = '/sample/the-rock.json';
+		// const WATCHMODE_TITLE = `${WATCHMODE_URL}/title/${watchmodeID}/sources/?apiKey=${WATCHMODE_API_KEY}&regions=US`;
+		const WATCHMODE_TITLE = 'assets/sample/the-rock.json';
 
 		response = await fetch(WATCHMODE_TITLE);
 		data = await response.json();
@@ -139,6 +149,8 @@ inputFields.forEach((input, i) => {
 			input.parentElement.classList.add('filled');
 			if (event.target.value > event.target.max) {
 				event.target.value = event.target.max;
+			} else if (event.target.value < event.target.min) {
+				event.target.value = event.target.min;
 			}
 
 			if (i < 2) inputFields[i + 1].focus();
