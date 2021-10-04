@@ -155,6 +155,7 @@ button[type='submit']:disabled {
 
 #movie-title {
 	font-size: 52px;
+	line-height: 1.1em;
 }
 
 #release-date {
@@ -231,10 +232,14 @@ button[type='submit']:disabled {
 		font-size: 27px;
 	}
 
+	#movie-title {
+		font-size: 36px;
+	}
+
 	.movie {
 		width: 90%;
 		height: fit-content;
-		grid-template-areas: 'info' 'plot';
+		grid-template-areas: 'info' 'plot' 'services';
 	}
 
 	#poster {
