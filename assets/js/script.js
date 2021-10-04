@@ -60,8 +60,8 @@ async function requestMovie() {
 	 */
 	await new Promise((resolve, _reject) => {
 		setInterval(() => {
-			// resolve();
-		}, 1500);
+			resolve();
+		}, 1200);
 	});
 
 	// const OMDB_SEARCH = `${OMDB_URL}/?apikey=${OMDB_API_KEY}&t=the&y=${inputYear.value}&type=movie`;
