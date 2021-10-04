@@ -23,7 +23,7 @@ This is the first project of the Rutgers Coding Bootcamp. The goal is to use eve
 
 ## Demo
 
-TBA
+![Demo gif](demo/demo.gif)
 
 ## Potential improvements
 

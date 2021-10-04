@@ -43,7 +43,7 @@ function checkFields() {
  * Because of API limitations, we're only searching movies with the word "the"
  * This restriction was chosen because "the" is the most commenly used word in the English language
  *
- * Times this comment block used "the": 5
+ * Times this comment block used "the": 5, not including the (6) three quoted ones
  */
 async function requestMovie() {
 	/**
@@ -60,8 +60,8 @@ async function requestMovie() {
 	 */
 	await new Promise((resolve, _reject) => {
 		setInterval(() => {
-			// resolve();
-		}, 1500);
+			resolve();
+		}, 1200);
 	});
 
 	// const OMDB_SEARCH = `${OMDB_URL}/?apikey=${OMDB_API_KEY}&t=the&y=${inputYear.value}&type=movie`;
