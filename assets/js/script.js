@@ -18,6 +18,8 @@ let inputGroup = document.querySelector('.date-group');
  */
 let inputFields = [...inputGroup.querySelectorAll('input')];
 
+let [inputMonth, inputDay, inputYear] = inputFields;
+
 /**
  * Scrollable list of services
  * @type {HTMLDivElement}
@@ -58,16 +60,16 @@ async function requestMovie() {
 	 * This is just to demo the loading animation.
 	 * Remove this for production
 	 */
-	await new Promise((resolve, _reject) => {
-		setInterval(() => {
-			resolve();
-		}, 1200);
-	});
+	// await new Promise((resolve, _reject) => {
+	// 	setInterval(() => {
+	// 		resolve();
+	// 	}, 1200);
+	// });
 
-	// const OMDB_SEARCH = `${OMDB_URL}/?apikey=${OMDB_API_KEY}&t=the&y=${inputYear.value}&type=movie`;
-	const OMDB_SEARCH = 'assets/sample/1996.json';
+	const OMDB_SEARCH = `${OMDB_URL}/?apikey=${OMDB_API_KEY}&t=the&y=${inputYear.value}&type=movie`;
+	// const OMDB_SEARCH = 'assets/sample/1996.json';
 
-	response = await fetch(OMDB_SEARCH); // `${OMDB_URL}/?apikey=${OMDB_API_KEY}&t=the&y=${inputYear.value}&type=movie`
+	response = await fetch(OMDB_SEARCH);
 	data = await response.json();
 
 	const { Released, Title, Runtime, Poster, Rated, Ratings, Plot, Actors, imdbID } = data;
@@ -89,10 +91,10 @@ async function requestMovie() {
 	 * Pipe the previously fetched IMDb ID into the Watchmode API
 	 * and get all services the given movie is still streaming on
 	 */
-	// const WATCHMODE_SEARCH = `${WATCHMODE_URL}/search/?apiKey=${WATCHMODE_API_KEY}&search_field=imdb_id&search_value=${imdbID}`;
+	const WATCHMODE_SEARCH = `${WATCHMODE_URL}/search/?apiKey=${WATCHMODE_API_KEY}&search_field=imdb_id&search_value=${imdbID}`;
 
-	// response = await fetch(WATCHMODE_SEARCH);
-	// data = await response.json();
+	response = await fetch(WATCHMODE_SEARCH);
+	data = await response.json();
 
 	if (!data.statusCode) {
 		response = await fetch('assets/json/services.json');
@@ -102,10 +104,10 @@ async function requestMovie() {
 		 */
 		const supportedServices = await response.json();
 
-		// const watchmodeID = data.title_results[0].id;
+		const watchmodeID = data.title_results[0].id;
 
-		// const WATCHMODE_TITLE = `${WATCHMODE_URL}/title/${watchmodeID}/sources/?apiKey=${WATCHMODE_API_KEY}&regions=US`;
-		const WATCHMODE_TITLE = 'assets/sample/the-rock.json';
+		const WATCHMODE_TITLE = `${WATCHMODE_URL}/title/${watchmodeID}/sources/?apiKey=${WATCHMODE_API_KEY}&regions=US`;
+		// const WATCHMODE_TITLE = 'assets/sample/the-rock.json';
 
 		response = await fetch(WATCHMODE_TITLE);
 		data = await response.json();
