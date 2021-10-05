@@ -1,4 +1,8 @@
-PLACEHOLDER
+<p align="center">
+	<a href="https://krushilnaik.github.io/Flashback/">
+		<img src="https://i.imgur.com/nT9LavM.png" height="40" />
+	</a>
+</p>
 
 # Project 1: Flashback
 
