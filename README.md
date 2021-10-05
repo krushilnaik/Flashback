@@ -8,6 +8,7 @@ PLACEHOLDER
   - [Table of Contents](#table-of-contents)
   - [Tech stack](#tech-stack)
   - [Demo](#demo)
+  - [Benchmarks](#benchmarks)
   - [Potential improvements](#potential-improvements)
 
 Having trouble finding a movie to watch? Step into our time machine and see what was trending around the time (more accurately, the date and year) you were born!
@@ -24,6 +25,12 @@ This is the first project of the Rutgers Coding Bootcamp. The goal is to use eve
 ## Demo
 
 ![Demo gif](demo/demo.gif)
+
+## Benchmarks
+
+|                   Desktop                   |                  Mobile                   |
+| :-----------------------------------------: | :---------------------------------------: |
+| ![desktop scores](./benchmarks/desktop.png) | ![mobile scores](./benchmarks/mobile.png) |
 
 ## Potential improvements
 

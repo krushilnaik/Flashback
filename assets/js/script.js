@@ -36,30 +36,35 @@ let movieContainer = document.querySelector('.movie');
  * Check if all the fields in the input group have been (legitamately) filled out
  */
 function checkFields() {
-	const allFieldsFilled = inputGroup.getElementsByClassName('filled').length;
-	document.querySelector('button').disabled = !(allFieldsFilled === 3);
+	/**
+	 * The number of input fields marked as filled
+	 */
+	const filledFields = inputGroup.getElementsByClassName('filled').length;
+
+	document.querySelector('button').disabled = !(filledFields === 3);
 }
 
 /**
- * Using the date entered, fetch a movie that was released the same year
- * Because of API limitations, we're only searching movies with the word "the"
- * This restriction was chosen because "the" is the most commenly used word in the English language
+ * Using the date entered, fetch a movie that was released the same year.
+ * Because of API limitations, we're only searching movies with the word "the".
+ * This restriction was chosen because "the" is the most commenly used word in the English language.
  *
  * Times this comment block used "the": 5, not including the (6) three quoted ones
  */
 async function requestMovie() {
 	/**
 	 * Predefine these variables for usage with API calls
+	 *
 	 * Recycling is good
 	 */
 	let response, data;
 
 	movieContainer.classList.add('loading');
 
-	/**
-	 * This is just to demo the loading animation.
-	 * Remove this for production
-	 */
+	// /**
+	//  * This is just to demo the loading animation.
+	//  * Remove this for production
+	//  */
 	// await new Promise((resolve, _reject) => {
 	// 	setInterval(() => {
 	// 		resolve();
@@ -88,8 +93,8 @@ async function requestMovie() {
 	movieContainer.querySelector('#plot').innerHTML = Plot;
 
 	/**
-	 * Pipe the previously fetched IMDb ID into the Watchmode API
-	 * and get all services the given movie is still streaming on
+	 * Pipe the IMDb ID into the Watchmode API.
+	 * Get all services the movie is streaming on
 	 */
 	const WATCHMODE_SEARCH = `${WATCHMODE_URL}/search/?apiKey=${WATCHMODE_API_KEY}&search_field=imdb_id&search_value=${imdbID}`;
 
@@ -100,6 +105,10 @@ async function requestMovie() {
 		response = await fetch('assets/json/services.json');
 
 		/**
+		 * All services tracked by Watchmode API
+		 *
+		 * Pulled via https://api.watchmode.com/v1/sources/?apiKey={apiKey}
+		 * and saved in `assets/json/services.json`
 		 * @type {object[]}
 		 */
 		const supportedServices = await response.json();
@@ -134,7 +143,7 @@ async function requestMovie() {
 			`;
 		});
 	} else {
-		console.log(`Error fetching ${WATCHMODE_SEARCH || ''}`);
+		console.log(`Error fetching ${WATCHMODE_SEARCH}`);
 	}
 
 	movieContainer.classList.remove('loading');
@@ -149,12 +158,22 @@ inputFields.forEach((input, i) => {
 
 		if (event.target.value.length === event.target.getAttribute('max').length) {
 			input.parentElement.classList.add('filled');
+
+			/**
+			 * If the user types in:
+			 * 	- a month greater than 10 or less than 1
+			 * 	- a day greater than 31 or less than 1,
+			 * autocorrect them
+			 */
 			if (event.target.value > event.target.max) {
 				event.target.value = event.target.max;
 			} else if (event.target.value < event.target.min) {
 				event.target.value = event.target.min;
 			}
 
+			/**
+			 * Focus the next input group, if there is one
+			 */
 			if (i < 2) inputFields[i + 1].focus();
 		} else {
 			input.parentElement.classList.remove('filled');
