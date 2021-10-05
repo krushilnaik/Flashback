@@ -22,7 +22,7 @@ This is the first project of the Rutgers Coding Bootcamp. The goal is to use eve
 ## Tech stack
 
 -  Vanilla JavaScript
--  [TailwindCSS](https://tailwindcss.com/)
+-  [TailwindCSS](https://tailwindcss.com/) + [Font Awesome](https://fontawesome.com/)
 -  [OMDb API](http://www.omdbapi.com/)
 -  [Watchmode API](https://api.watchmode.com/)
 
