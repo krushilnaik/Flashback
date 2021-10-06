@@ -6,6 +6,9 @@ const OMDB_URL = 'http://www.omdbapi.com';
 const WATCHMODE_API_KEY = 'lRXZDQg46UX6Rtc0TC32jZ3ryc427Mmh14ChY3TH';
 const WATCHMODE_URL = 'https://api.watchmode.com/v1';
 
+// CORS proxy
+const CORS_PROXY_URL = 'https://cors-proxy-krushil.herokuapp.com';
+
 /**
  * Input group
  * @type {HTMLDivElement}
@@ -71,7 +74,7 @@ async function requestMovie() {
 	// 	}, 1200);
 	// });
 
-	const OMDB_SEARCH = `${OMDB_URL}/?apikey=${OMDB_API_KEY}&t=the&y=${inputYear.value}&type=movie`;
+	const OMDB_SEARCH = `${CORS_PROXY_URL}/${OMDB_URL}/?apikey=${OMDB_API_KEY}&t=the&y=${inputYear.value}&type=movie`;
 	// const OMDB_SEARCH = 'assets/sample/1996.json';
 
 	response = await fetch(OMDB_SEARCH);
