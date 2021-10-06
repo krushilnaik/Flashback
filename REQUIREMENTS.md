@@ -26,15 +26,15 @@ You and your group will use everything you’ve learned over the past six weeks 
 
 # Presentation Requirements
 
--  [ ] Use this Project Presentation Template (Links to an external site.) to address the following:
+-  [x] Use this Project Presentation Template (Links to an external site.) to address the following:
 
--  [ ] Elevator pitch: A one-minute description of your application.
+-  [x] Elevator pitch: A one-minute description of your application.
 
--  [ ] Concept: What is your user story? What was your motivation for development?
+-  [x] Concept: What is your user story? What was your motivation for development?
 
--  [ ] Process: What were the technologies used? How were tasks and roles broken down and assigned? What challenges did you encounter? What were your successes?
+-  [x] Process: What were the technologies used? How were tasks and roles broken down and assigned? What challenges did you encounter? What were your successes?
 
--  [ ] Demo: Show your stuff!
+-  [x] Demo: Show your stuff!
 
 # Directions for future development
 
