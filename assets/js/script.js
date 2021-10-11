@@ -164,7 +164,7 @@ inputFields.forEach((input, i) => {
 
 			/**
 			 * If the user types in:
-			 * 	- a month greater than 10 or less than 1
+			 * 	- a month greater than 12 or less than 1
 			 * 	- a day greater than 31 or less than 1,
 			 * autocorrect them
 			 */
